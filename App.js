@@ -79,21 +79,26 @@ export default function App() {
           days.map((day, index) => (
             <View key={index} style={styles.day}>
               <Text style={styles.date}>{formatDate(day.dt)}</Text>
-              <Text style={styles.temp}>{parseFloat(day.temp.day).toFixed(1)}</Text>
-              {day.weather && day.weather[0] && (
-                <>
-                  <Image
-                    source={{ uri: `http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png` }}
-                    style={styles.weatherIcon}
-                  />
-                  <Text style={styles.tinyText}>{getWeatherDescription(day.weather[0].id)}</Text>
-                </>
-              )}
+              <Text style={styles.temp}>{parseFloat(day.temp.day).toFixed(1)}
+                <Text style={styles.unit}>°C</Text>
+              </Text>
+              {
+                day.weather && day.weather[0] && (
+                  <>
+                    <Image
+                      source={{ uri: `http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png` }}
+                      style={styles.weatherIcon}
+                    />
+                    <Text style={styles.tinyText}>{getWeatherDescription(day.weather[0].id)}</Text>
+                  </>
+                )
+              }
             </View>
           ))
-        )}
-      </ScrollView>
-    </View>
+        )
+        }
+      </ScrollView >
+    </View >
   );
 }
 
@@ -119,7 +124,7 @@ const styles = StyleSheet.create({
   temp: {
     marginTop: 30,
     fontWeight: '600',
-    fontSize: 178,
+    fontSize: 120,
   },
   weatherIcon: {
     width: 100,
@@ -133,4 +138,7 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 30,
   },
+  unit: {
+    fontSize: 50,
+  }
 });
