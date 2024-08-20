@@ -124,7 +124,9 @@ const styles = StyleSheet.create({
   temp: {
     marginTop: 30,
     fontWeight: '600',
-    fontSize: 120,
+    fontSize: 130,
+    flexDirection: 'row', // 온도와 기호를 나란히 배치합니다.
+    alignItems: 'baseline', // 텍스트를 베이스라인에 정렬합니다.
   },
   weatherIcon: {
     width: 100,
